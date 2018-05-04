@@ -140,7 +140,7 @@
         for (let i = 0; i < listHieght.length - 1; i++) {
           let height1 = listHieght[i]
           let height2 = listHieght[i + 1]
-          if (!height2 || (-newY >= height1 && -newY <= height2)) {
+          if (!height2 || (-newY >= height1 && -newY < height2)) {
             this.currentIndex = i
             this.diff = height2 + newY
             return

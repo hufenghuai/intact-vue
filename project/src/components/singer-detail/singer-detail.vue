@@ -1,10 +1,11 @@
 <template>
   <transition name="slide">
-    <div class="singer-detail"></div>
+    <music-list :songs="songs" :title="title" :bg-image="bgImage"></music-list>
   </transition>
 </template>
 
 <script type="text/ecmascript-6">
+  import MusicList from 'components/music-list/music-list'
   import {createSong, isValidMusic, processSongsUrl} from 'common/js/song'
   import {mapGetters} from 'vuex'
   import {getSingerDetail} from 'api/singer'
@@ -17,6 +18,12 @@
       }
     },
     computed: {
+      title () {
+        return this.singer.name
+      },
+      bgImage () {
+        return this.singer.avatar
+      },
       ...mapGetters([
         'singer'
       ])
@@ -48,25 +55,17 @@
         })
         return ret
       }
+    },
+    components: {
+      MusicList
     }
   }
 </script>
 
 <style lang="stylus" ref="stylesheet/stylus">
-  @import "~common/stylus/variable"
 
   .slide-enter-active, .slide-leave-active
     transition: all 0.3s
-
   .slide-enter, .slide-leave-to
     transform: translate3d(100%, 0, 0)
-
-  .singer-detail
-    position fixed
-    z-index 100
-    top 0
-    left 0
-    right 0
-    bottom 0
-    background-color $color-background
 </style>

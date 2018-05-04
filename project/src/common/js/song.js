@@ -1,5 +1,5 @@
 import {ERR_OK} from 'api/config'
-import {getSongsUrl} from 'api/song'
+import { getSongsUrl } from 'api/song'
 
 export default class Song {
   constructor ({id, mid, singer, name, album, duration, image, url}) {
